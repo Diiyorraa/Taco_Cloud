@@ -1,4 +1,4 @@
-package com.example.Test1;
+package com.example.Test1.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,11 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
+
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import lombok.Data;
@@ -21,7 +21,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="Taco_Order")
-public class Order implements Serializable {
+public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,10 +57,10 @@ public class Order implements Serializable {
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
 
-    @ManyToMany(targetEntity=Taco.class)
-    private List<Taco> tacos = new ArrayList<>();
+    @ManyToMany(targetEntity= Tacos.class)
+    private List<Tacos> tacos = new ArrayList<>();
 
-    public void addDesign(Taco design) {
+    public void addDesign(Tacos design) {
         this.tacos.add(design);
     }
 

@@ -1,4 +1,4 @@
-package com.example.Test1.security;
+package com.example.Test1.Security;
 
 
 import org.springframework.context.annotation.Configuration;

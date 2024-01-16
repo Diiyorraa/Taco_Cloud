@@ -1,4 +1,4 @@
-package com.example.Test1;
+package com.example.Test1.Models;
 
 import lombok.*;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @Entity
-public class Ingredient {
+public class Ingredients {
 
     @Id
     @Column(length = 4)

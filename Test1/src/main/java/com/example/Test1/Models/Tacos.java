@@ -1,5 +1,4 @@
-package com.example.Test1;
-import com.example.Test1.Ingredient;
+package com.example.Test1.Models;
 import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.Size;
@@ -19,7 +18,7 @@ import javax.persistence.PrePersist;
 
 @Data
 @Entity
-public class Taco {
+public class Tacos {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -31,9 +30,9 @@ public class Taco {
 
     private Date createdAt;
 
-    @ManyToMany(targetEntity= Ingredient.class)
+    @ManyToMany(targetEntity= Ingredients.class)
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<Ingredient>ingredients=new ArrayList<>();
+    private List<Ingredients>ingredients=new ArrayList<>();
 
     @PrePersist
     void createdAt() {

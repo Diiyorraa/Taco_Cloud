@@ -1,11 +1,8 @@
-package com.example.Test1.web;
+package com.example.Test1.Controllers;
 
-import com.example.Test1.Order;
-import com.example.Test1.data.OrderRepository;
-import com.example.Test1.Taco;
-import lombok.extern.slf4j.Slf4j;
+import com.example.Test1.Models.Orders;
+import com.example.Test1.Repositories.OrdersRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +17,9 @@ import javax.validation.Valid;
 @SessionAttributes("order")
 public class OrderController {
 
-    private OrderRepository orderRepo;
+    private OrdersRepository orderRepo;
 
-    public OrderController(OrderRepository orderRepo) {
+    public OrderController(OrdersRepository orderRepo) {
         this.orderRepo = orderRepo;
     }
 
@@ -32,7 +29,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public String processOrder(@Valid Order order, Errors errors,
+    public String processOrder(@Valid Orders order, Errors errors,
                                SessionStatus sessionStatus) {
         if (errors.hasErrors()) {
             return "orderForm";

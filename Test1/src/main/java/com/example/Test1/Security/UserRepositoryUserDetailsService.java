@@ -1,4 +1,4 @@
-package com.example.Test1.security;
+package com.example.Test1.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,17 +8,17 @@ import org.springframework.security.core.userdetails.
         UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.Test1.Users;
-import com.example.Test1.data.UserRepository;
+import com.example.Test1.Models.Users;
+import com.example.Test1.Repositories.UsersRepository;
 
 @Service
 public class UserRepositoryUserDetailsService
         implements UserDetailsService {
 
-    private UserRepository userRepo;
+    private UsersRepository userRepo;
 
     @Autowired
-    public UserRepositoryUserDetailsService(UserRepository userRepo) {
+    public UserRepositoryUserDetailsService(UsersRepository userRepo) {
         this.userRepo = userRepo;
     }
 

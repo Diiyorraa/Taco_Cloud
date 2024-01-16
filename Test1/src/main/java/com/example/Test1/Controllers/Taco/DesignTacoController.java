@@ -1,4 +1,4 @@
-package com.example.Test1.web;
+package com.example.Test1.Controllers.Taco;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.example.Test1.Users;
-import com.example.Test1.data.UserRepository;
+import com.example.Test1.Models.Users;
+import com.example.Test1.Repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.example.Test1.Taco;
-import com.example.Test1.Ingredient;
-import com.example.Test1.Ingredient.Type;
-import com.example.Test1.Order;
-import com.example.Test1.data.TacoRepository;
-import com.example.Test1.data.IngredientRepository;
+import com.example.Test1.Models.Tacos;
+import com.example.Test1.Models.Ingredients;
+import com.example.Test1.Models.Ingredients.Type;
+import com.example.Test1.Models.Orders;
+import com.example.Test1.Repositories.TacosRepository;
+import com.example.Test1.Repositories.IngredientsRepository;
 
 
 import java.security.Principal;
@@ -38,39 +38,39 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DesignTacoController {
 
-    private final IngredientRepository ingredientRepo;
+    private final IngredientsRepository ingredientRepo;
 
-    private TacoRepository tacoRepo;
+    private TacosRepository tacoRepo;
 
-    private UserRepository userRepo;
+    private UsersRepository userRepo;
 
     @Autowired
     public DesignTacoController(
-            IngredientRepository ingredientRepo,
-            TacoRepository tacoRepo,
-            UserRepository userRepo) {
+            IngredientsRepository ingredientRepo,
+            TacosRepository tacoRepo,
+            UsersRepository userRepo) {
         this.ingredientRepo = ingredientRepo;
         this.tacoRepo = tacoRepo;
         this.userRepo = userRepo;
     }
 
     @ModelAttribute(name = "order")
-    public Order order() {
-        return new Order();
+    public Orders order() {
+        return new Orders();
     }
 
     @ModelAttribute(name = "design")
-    public Taco design() {
-        return new Taco();
+    public Tacos design() {
+        return new Tacos();
     }
 
     @GetMapping
     public String showDesignForm(Model model, Principal principal) {
         log.info("   --- Designing taco");
-        List<Ingredient> ingredients = new ArrayList<>();
+        List<Ingredients> ingredients = new ArrayList<>();
         ingredientRepo.findAll().forEach(i -> ingredients.add(i));
 
-        Type[] types = Ingredient.Type.values();
+        Type[] types = Ingredients.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
                     filterByType(ingredients, type));
@@ -85,8 +85,8 @@ public class DesignTacoController {
 
     @PostMapping
     public String processDesign(
-            @Valid Taco taco, Errors errors,
-            @ModelAttribute Order order) {
+            @Valid Tacos taco, Errors errors,
+            @ModelAttribute Orders order) {
 
         log.info("   --- Saving taco");
 
@@ -94,14 +94,14 @@ public class DesignTacoController {
             return "design";
         }
 
-        Taco saved = tacoRepo.save(taco);
+        Tacos saved = tacoRepo.save(taco);
         order.addDesign(saved);
 
         return "redirect:/orders/current";
     }
 
-    private List<Ingredient> filterByType(
-            List<Ingredient> ingredients, Type type) {
+    private List<Ingredients> filterByType(
+            List<Ingredients> ingredients, Type type) {
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))

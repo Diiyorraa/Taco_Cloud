@@ -1,7 +1,7 @@
-package com.example.Test1.security;
+package com.example.Test1.DTO.Requests;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import lombok.Data;
-import com.example.Test1.Users;
+import com.example.Test1.Models.Users;
 
 @Data
 public class RegistrationForm {
