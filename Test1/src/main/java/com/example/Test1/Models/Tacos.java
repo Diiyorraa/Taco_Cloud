@@ -4,7 +4,8 @@ import java.util.List;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
-import lombok.Data;
+import lombok.*;
+
 import java.util.ArrayList;
 
 
@@ -16,7 +17,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Tacos {
 

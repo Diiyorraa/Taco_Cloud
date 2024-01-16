@@ -4,8 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor(force = true)
 @Entity
 public class Ingredients {

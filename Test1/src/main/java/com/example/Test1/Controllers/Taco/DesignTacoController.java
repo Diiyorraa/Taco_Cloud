@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import com.example.Test1.Models.Users;
 import com.example.Test1.Repositories.UsersRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/design")
 @SessionAttributes("order")
 @Slf4j
+@RequiredArgsConstructor
 public class DesignTacoController {
 
     private final IngredientsRepository ingredientRepo;

@@ -5,9 +5,9 @@ import com.example.Test1.Models.Tacos;
 
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-
-public interface TacosRepository
-        extends CrudRepository<Tacos, Long> {
+@Repository
+public interface TacosRepository extends CrudRepository<Tacos, Long> {
 
 }

@@ -1,5 +1,6 @@
 package com.example.Test1.Controllers.Authentication;
 import com.example.Test1.DTO.Requests.RegistrationForm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +10,7 @@ import com.example.Test1.Repositories.UsersRepository;
 
 @Controller
 @RequestMapping("/register")
+@RequiredArgsConstructor
 public class RegistrationController {
 
 
