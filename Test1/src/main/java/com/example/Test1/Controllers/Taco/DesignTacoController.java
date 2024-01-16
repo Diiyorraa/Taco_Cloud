@@ -70,7 +70,7 @@ public class DesignTacoController {
     public String showDesignForm(Model model, Principal principal) {
         log.info("   --- Designing taco");
         List<Ingredients> ingredients = new ArrayList<>();
-        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+        ingredientRepo.findAll().forEach(ingredients::add);
 
         Type[] types = Ingredients.Type.values();
         for (Type type : types) {

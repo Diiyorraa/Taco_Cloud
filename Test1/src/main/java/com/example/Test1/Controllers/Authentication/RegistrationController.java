@@ -17,12 +17,6 @@ public class RegistrationController {
     private UsersRepository userRepo;
     private PasswordEncoder passwordEncoder;
 
-    public RegistrationController(
-            UsersRepository userRepo, PasswordEncoder passwordEncoder) {
-        this.userRepo = userRepo;
-        this.passwordEncoder = passwordEncoder;
-    }
-
     @GetMapping
     public String registerForm() {
         return "RegistrationForm";
@@ -33,5 +27,4 @@ public class RegistrationController {
         userRepo.save(form.toUser(passwordEncoder));
         return "redirect:/login";
     }
-
 }
