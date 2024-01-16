@@ -14,6 +14,8 @@ public class Ingredient {
     @Column(length = 4)
     private final String id;
     private final String name;
+
+    @Enumerated(EnumType.STRING)
     private final Type type;
 
     public static enum Type {
