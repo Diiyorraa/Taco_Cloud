@@ -3,13 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 
@@ -28,11 +22,17 @@ public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    // where is users connected between each other
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
     private Date placedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private Users userId;
 
     //end::allButDetailProperties[]
     @NotBlank(message="Delivery name is required")
