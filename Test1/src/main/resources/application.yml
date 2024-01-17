@@ -5,3 +5,29 @@ spring:
       path: /h2-console
   jpa:
     defer-datasource-initialization: true
+
+
+taco:
+  orders:
+    pageSize: 10
+
+
+  discount:
+    codes:
+      abcdef: 10
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+
+  datasource:
+    url: jdbc:mysql://localhost/tacocloud
+    username: tacouser
+    password: tacopassword
+
+logging:
+  level:
+    tacos: WARN

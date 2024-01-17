@@ -21,8 +21,8 @@ public class Test1Application implements WebMvcConfigurer {
 
 		try {
 
-			Server webServer = Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082").start();
-			Server tcpServer = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092").start();
+			Server webServer = Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8083").start();
+			Server tcpServer = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9093").start();
 		}
 		catch (SQLException e) {
 

@@ -42,9 +42,9 @@ public class DesignTacoController {
 
     private final IngredientsRepository ingredientRepo;
 
-    private TacosRepository tacoRepo;
+    private  TacosRepository tacoRepo;
 
-    private UsersRepository userRepo;
+    private  UsersRepository userRepo;
 
     @Autowired
     public DesignTacoController(
@@ -66,12 +66,14 @@ public class DesignTacoController {
         return new Tacos();
     }
 
-    @GetMapping
+    // покажите ран?
+    @GetMapping("/test")
     public String showDesignForm(Model model, Principal principal) {
         log.info("   --- Designing taco");
         List<Ingredients> ingredients = new ArrayList<>();
         ingredientRepo.findAll().forEach(ingredients::add);
 
+        // у меня он не хочет переключаться между экранами
         Type[] types = Ingredients.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
@@ -82,7 +84,7 @@ public class DesignTacoController {
         Users user = userRepo.findByUsername(username);
         model.addAttribute("user", user);
 
-        return "design";
+        return "design"; // не возвращает и не показывает дизайн
     }
 
     @PostMapping
