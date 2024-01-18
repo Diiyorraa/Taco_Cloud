@@ -4,5 +4,5 @@ import com.example.Test1.Models.Ingredients;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IngredientsRepository extends CrudRepository<Ingredients,String>{
+public interface IngredientsRepository extends CrudRepository<Ingredients, String>{
 }

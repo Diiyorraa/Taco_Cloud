@@ -13,7 +13,7 @@ import java.util.List;
 
 @EnableJpaRepositories
 @Repository
-public interface OrdersRepository extends CrudRepository <Orders,Long> {
+public interface OrdersRepository extends CrudRepository <Orders, Long> {
 
     Page<Orders> findByUserIdOrderByPlacedAtDesc(Users userId, Pageable page);
 }

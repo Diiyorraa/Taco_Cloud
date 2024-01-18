@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor(force = true)
+@AllArgsConstructor
 @Entity
+@Table(name = "ingredient")
 public class Ingredients {
 
     @Id

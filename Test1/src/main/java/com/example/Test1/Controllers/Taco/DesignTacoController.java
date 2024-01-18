@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/design")
-@SessionAttributes("order")
+@SessionAttributes({"order", "user", "ingredient"})
 @Slf4j
 @RequiredArgsConstructor
 public class DesignTacoController {
@@ -73,7 +73,12 @@ public class DesignTacoController {
         List<Ingredients> ingredients = new ArrayList<>();
         ingredientRepo.findAll().forEach(ingredients::add);
 
-        // у меня он не хочет переключаться между экранами
+        System.out.println(ingredients.size());
+        for (Ingredients ingredient : ingredients) {
+
+            log.info(ingredient.getId() + " " + ingredient.getName() + " " + ingredient.getType());
+        }
+
         Type[] types = Ingredients.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
@@ -83,8 +88,10 @@ public class DesignTacoController {
         String username = principal.getName();
         Users user = userRepo.findByUsername(username);
         model.addAttribute("user", user);
+        model.addAttribute("ingredient", ingredients);
+        System.out.println(user.getFullname());
 
-        return "design"; // не возвращает и не показывает дизайн
+        return "design";
     }
 
     @PostMapping
@@ -94,11 +101,15 @@ public class DesignTacoController {
 
         log.info("   --- Saving taco");
 
+        log.info(taco.getName() + " " + taco.getCreatedAt() + " " + taco.getId() + " " + taco.getIngredients());
         if (errors.hasErrors()) {
             return "design";
         }
 
+        log.info("here");
         Tacos saved = tacoRepo.save(taco);
+        log.info(taco.getName() + " " + taco.getCreatedAt() + " " + taco.getId() + " " + taco.getIngredients());
+
         order.addDesign(saved);
 
         return "redirect:/orders/current";

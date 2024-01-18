@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   h2:
     console:
@@ -6,15 +9,19 @@ spring:
   jpa:
     defer-datasource-initialization: true
 
-
 taco:
   orders:
     pageSize: 10
 
-
   discount:
     codes:
       abcdef: 10
+
+
+orderprops:
+  prefix:
+    page-size: 10
+
 
 ---
 spring:

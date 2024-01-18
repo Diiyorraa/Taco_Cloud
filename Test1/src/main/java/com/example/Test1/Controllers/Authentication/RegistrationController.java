@@ -13,9 +13,8 @@ import com.example.Test1.Repositories.UsersRepository;
 @RequiredArgsConstructor
 public class RegistrationController {
 
-
-    private UsersRepository userRepo;
-    private PasswordEncoder passwordEncoder;
+    private final UsersRepository userRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping
     public String registerForm() {

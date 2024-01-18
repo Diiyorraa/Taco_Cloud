@@ -1,6 +1,7 @@
 package com.example.Test1.Models;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
@@ -9,19 +10,12 @@ import lombok.*;
 import java.util.ArrayList;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.PrePersist;
-
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "taco")
 public class Tacos {
 
     @Id

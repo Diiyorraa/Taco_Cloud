@@ -11,14 +11,14 @@
 <h1>Your orders</h1>
 
 <ul>
-  <li th:each="order : ${orders}">
+  <li th:each="order : ${ordersPage.content}">
     <span th:text="${order.placedAt}">DATE</span> -
     <span th:text="${order.deliveryName}">NAME</span>
     <ul>
       <li th:each="taco : ${order.tacos}">
-        <span th:text="${taco.name}"></span> :
-        <span th:each="ingredient : ${taco.ingredients}">
-              <span th:text="${ingredient.name}">INGREDIENT</span>,
+        <span th:text="${order.tacos.name}"></span> :
+        <span th:each="ingredient : ${order.tacos.ingredients}">
+              <span th:text="${order.tacos.ingredients.name}">INGREDIENT</span>,
             </span>
       </li>
     </ul>
